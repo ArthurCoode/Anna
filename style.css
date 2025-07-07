@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Dancing+Script:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Playfair Display', serif;
+  cursor: url('heart-cursor.png'), auto;
+}
+
+canvas#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+.hearts, .petals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+
+.carta {
+  background: rgba(255, 240, 245, 0.15);
+  border: 1px solid rgba(255, 192, 203, 0.3);
+  backdrop-filter: blur(15px);
+  padding: 40px 30px;
+  border-radius: 30px;
+  box-shadow: 0 10px 50px rgba(255, 105, 180, 0.3),
+              0 0 100px rgba(255, 182, 193, 0.2) inset;
+  text-align: center;
+  color: #fff0f5;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+    max-height: 80vh; /* limita a altura */
+  overflow-y: auto; /* rolagem interna se passar */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #ffb6c1 transparent; /* opcional */
+}
+
+.carta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,192,203,0.1) 0%, rgba(255,255,255,0) 70%);
+  animation: rotate 20s linear infinite;
+  z-index: -1;
+}
+
+.carta:hover {
+  transform: translateY(-5px);
+}
+
+.carta h1 {
+  font-size: 2.2em;
+  font-family: 'Simonetta', serif;
+  color: #ffccdd;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(255, 105, 180, 0.4);
+}
+
+#poema {
+  font-size: 1.2em;
+  line-height: 1.8;
+  white-space: pre-line;
+  min-height: 200px;
+  font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.coracao-container {
+  margin: 20px 0;
+}
+
+.coracao-pulsante {
+  width: 50px;
+  height: 50px;
+  background-color: #ff6b8b;
+  position: relative;
+  margin: 0 auto;
+  transform: rotate(45deg);
+  animation: pulse 1.5s ease infinite;
+}
+
+.coracao-pulsante:before, .coracao-pulsante:after {
+  content: '';
+  width: 50px;
+  height: 50px;
+  background-color: #ff6b8b;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.coracao-pulsante:before {
+  top: -25px;
+  left: 0;
+}
+
+.coracao-pulsante:after {
+  top: 0;
+  left: -25px;
+}
+
+.botao {
+  margin-top: 30px;
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #ff6b8b, #ff8eab);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.5s ease;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.botao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+}
+
+.botao span {
+  position: relative;
+  z-index: 2;
+}
+
+.botao::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.botao:hover::before {
+  left: 100%;
+}
+
+.coracao-btn {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  margin-left: 10px;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.coracao-btn:before, .coracao-btn:after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.coracao-btn:before {
+  top: -10px;
+  left: 0;
+}
+
+.coracao-btn:after {
+  top: 0;
+  left: -10px;
+}
+
+@keyframes pulse {
+  0% { transform: rotate(45deg) scale(1); }
+  50% { transform: rotate(45deg) scale(1.1); }
+  100% { transform: rotate(45deg) scale(1); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Apenas os ajustes de responsividade adicionados */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 10px;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .carta {
+    padding: 25px 15px;
+    max-width: 90%;
+    margin: 20px 0;
+  }
+
+  .carta h1 {
+    font-size: 1.8em;
+  }
+
+  #poema {
+    font-size: 1em;
+    min-height: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .carta {
+    padding: 20px 12px;
+  }
+
+  .carta h1 {
+    font-size: 1.5em;
+  }
+
+  #poema {
+    font-size: 0.9em;
+  }
+}

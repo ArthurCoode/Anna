@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seção de Fotos Romântica</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #202020;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+        }
+
+        /* Container principal */
+        .photo-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Título da seção */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #d46a6a;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(to right, #f8bbd0, #d46a6a);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 3px;
+        }
+
+        /* Container das fotos */
+        .photo-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Estilo individual para cada foto */
+        .photo-card {
+            width: 45%;
+            min-width: 300px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(212, 106, 106, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(212, 106, 106, 0.3);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Overlay romântico */
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(92, 39, 39, 0.8), transparent);
+            padding: 20px;
+            color: white;
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-card:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .photo-description {
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Decorações românticas */
+        .heart-decoration {
+            position: absolute;
+            color: #f8bbd0;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        .heart-1 {
+            top: -15px;
+            left: -15px;
+        }
+
+        .heart-2 {
+            bottom: -15px;
+            right: -15px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .photo-card {
+                width: 90%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="photo-section">
+        <h2 class="section-title">Momentos de Amor</h2>
+        
+        <div class="photo-container">
+            <!-- Primeira foto -->
+            <div class="photo-card">
+                <span class="heart-decoration heart-1">❤</span>
+                <img src="guto.jpeg" alt="Foto romântica">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Momento Especial</h3>
+                    <p class="photo-description">Um instante capturado para eternizar nosso amor.</p>
+                </div>
+                <span class="heart-decoration heart-2">❤</span>
+            </div>
+            
+            <!-- Segunda foto -->
+            <div class="photo-card">
+                <span class="heart-decoration heart-1">❤</span>
+                <img src="primeira-msg.jpeg" alt="Nossa primeira mensagem">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Primeira Mensagem</h3>
+                    <p class="photo-description">O início de uma linda história de amor.</p>
+                </div>
+                <span class="heart-decoration heart-2">❤</span>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
